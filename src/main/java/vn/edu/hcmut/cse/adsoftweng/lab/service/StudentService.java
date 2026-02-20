@@ -22,4 +22,10 @@ public class StudentService {
         return studentRepository.findById(id).orElse(null);
     }
 
+    public List<Student> getByKeyword(String keyword) {
+
+
+        return studentRepository.findByNameOrEmailContaining(keyword);
+    }
+
 }
