@@ -1,3 +1,11 @@
+CREATE TABLE students (
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	age INTEGER NOT NULL
+);
+
+
 -- Thêm dữ liệu mau
 INSERT INTO students (id, name, email, age) VALUES 
 	(1, 'Nguyen Van A', 'vana@example.com', 20),

@@ -7,7 +7,7 @@
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         padding: 40px;
-        background-color: #f8f9fa; /* Màu nền nhẹ nhàng */
+        background-color: #f8f9fa;
         color: #333;
       }
 
@@ -21,14 +21,14 @@
         display: flex;
         gap: 10px;
         margin-bottom: 25px;
-        max-width: 500px; /* Giới hạn độ rộng thanh tìm kiếm */
+        max-width: 500px;
       }
 
       .search-input {
         flex: 1;
         padding: 10px 15px;
         border: 2px solid #ddd;
-        border-radius: 8px; /* Bo góc */
+        border-radius: 8px;
         font-size: 16px;
         outline: none;
         transition:
@@ -88,8 +88,25 @@
 
       .text-danger {
         color: #e74c3c !important;
-        background-color: #fff5f5; /* Thêm nền nhẹ cho dòng bị lỗi */
+        background-color: #fff5f5;
         font-weight: bold;
+      }
+
+      /* --- Nút Chi tiết --- */
+      .btn-detail {
+        display: inline-block;
+        padding: 6px 15px;
+        background-color: #2ecc71; /* Màu xanh lá */
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .btn-detail:hover {
+        background-color: #27ae60;
       }
     </style>
   </head>
@@ -114,6 +131,7 @@
           <th>Họ và Tên</th>
           <th>Email</th>
           <th>Tuổi</th>
+          <th>Hành động</th>
         </tr>
       </thead>
       <tbody>
@@ -125,6 +143,9 @@
           <td th:text="${student.name}">Tên Mẫu</td>
           <td th:text="${student.email}">Email Mẫu</td>
           <td th:text="${student.age}">0</td>
+          <td>
+            <a th:href="@{/students/{id}(id=${student.id})}" class="btn-detail">Chi tiết</a>
+          </td>
         </tr>
       </tbody>
     </table>

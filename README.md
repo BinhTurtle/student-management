@@ -5,7 +5,7 @@ Bài tập Xây dựng Web App Quản lý Thông tin Sinh viên sử dụng Java
 ## 📋 Thông tin nhóm
 | STT | Họ và tên | MSSV | Vai trò |
 |-----|-----------|------|---------|
-| 1 | Nguyễn Khánh Bình | 2210318 | [Developer] |
+| 1 | Nguyễn Khánh Bình | 2210318 | Developer |
 
 ## 🌐 Public URL (Web Service)
 > **Link Deploy:** [Dán link Render/Neon của bạn vào đây]
@@ -46,6 +46,7 @@ Bài tập Xây dựng Web App Quản lý Thông tin Sinh viên sử dụng Java
 ![Test trùng ID](images/lab1/2_test_trung_ID.png)
 
 **3. Test ràng buộc Not Null:**
+
 ![Test Not Null](images/lab1/3_test_rang_buoc_notnull.png)
 
 
