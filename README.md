@@ -8,7 +8,7 @@ Bài tập Xây dựng Web App Quản lý Thông tin Sinh viên sử dụng Java
 | 1 | Nguyễn Khánh Bình | 2210318 | Developer |
 
 ## 🌐 Public URL (Web Service)
-> **Link Deploy:** [Dán link Render/Neon của bạn vào đây]
+> **Link Deploy:** https://binh-student-management.onrender.com/students
 >
 > *(Bài tập đã được deploy theo yêu cầu của Lab 5)*
 
@@ -23,7 +23,7 @@ Bài tập Xây dựng Web App Quản lý Thông tin Sinh viên sử dụng Java
 1. **Clone repository:**
    ```bash
    git clone https://github.com/BinhTurtle/student-management
-   cd <ten-thu-muc>
+   cd <ten-thu-muc-goc>
    ```
 2. **Chạy project:**
    ```bash
