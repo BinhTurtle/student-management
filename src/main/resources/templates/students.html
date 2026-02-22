@@ -5,58 +5,11 @@
     <title>Danh Sách Sinh Viên</title>
     <style>
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Segoe UI", sans-serif;
         padding: 40px;
         background-color: #f8f9fa;
         color: #333;
       }
-
-      h1 {
-        color: #2c3e50;
-        margin-bottom: 30px;
-      }
-
-      /* --- Khu vực Thanh Tìm Kiếm --- */
-      .search-container {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 25px;
-        max-width: 500px;
-      }
-
-      .search-input {
-        flex: 1;
-        padding: 10px 15px;
-        border: 2px solid #ddd;
-        border-radius: 8px;
-        font-size: 16px;
-        outline: none;
-        transition:
-          border-color 0.3s,
-          box-shadow 0.3s;
-      }
-
-      .search-input:focus {
-        border-color: #3498db; /* Đổi màu khi click vào */
-        box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
-      }
-
-      .btn-search {
-        padding: 10px 25px;
-        background-color: #3498db;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s;
-      }
-
-      .btn-search:hover {
-        background-color: #2980b9; /* Đậm hơn khi di chuột qua */
-      }
-
-      /* --- Khu vực Bảng --- */
       table {
         width: 100%;
         border-collapse: separate;
@@ -66,63 +19,152 @@
         overflow: hidden;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       }
-
       th,
       td {
         padding: 12px 15px;
         text-align: left;
         border-bottom: 1px solid #eee;
       }
-
       th {
         background-color: #f1f3f5;
         font-weight: 600;
         text-transform: uppercase;
         font-size: 13px;
-        letter-spacing: 0.5px;
       }
-
-      tr:last-child td {
-        border-bottom: none;
-      }
-
       .text-danger {
         color: #e74c3c !important;
         background-color: #fff5f5;
         font-weight: bold;
       }
-
-      /* --- Nút Chi tiết --- */
-      .btn-detail {
-        display: inline-block;
-        padding: 6px 15px;
-        background-color: #2ecc71; /* Màu xanh lá */
+      .search-container {
+        display: flex;
+        gap: 10px;
+      }
+      .search-input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+      }
+      .btn {
+        padding: 10px 25px;
         color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        font-size: 14px;
+        border: none;
+        border-radius: 8px;
         font-weight: bold;
-        transition: background-color 0.3s;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-blue {
+        background-color: #3498db;
+      }
+      .btn-blue:hover {
+        background-color: #2980b9;
+      }
+      .btn-green {
+        background-color: #2ecc71;
+      }
+      .btn-green:hover {
+        background-color: #27ae60;
+      }
+      .btn-gray {
+        background-color: #95a5a6;
+      }
+      .btn-gray:hover {
+        background-color: #7f8c8d;
       }
 
-      .btn-detail:hover {
-        background-color: #27ae60;
+      /* --- CSS CHO MODAL --- */
+      .modal-overlay {
+        display: none; /* Ẩn mặc định */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Nền tối mờ */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        backdrop-filter: blur(3px);
+      }
+      .modal-overlay.active {
+        display: flex;
+      } /* Hiện khi có class active */
+      .modal-card {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 450px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        animation: slideDown 0.3s ease-out;
+      }
+      @keyframes slideDown {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+      .modal-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 25px;
+      }
+      .modal-actions .btn {
+        flex: 1;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <h1>Danh Sách Sinh Viên</h1>
 
-    <form action="/students" method="GET" class="search-container">
-      <input
-        type="text"
-        name="keyword"
-        class="search-input"
-        placeholder="Nhập tên sinh viên cần tìm..."
-        th:value="${param.keyword}"
-      />
-      <button type="submit" class="btn-search">Tìm kiếm</button>
-    </form>
+    <div
+      style="display: flex; justify-content: space-between; margin-bottom: 25px"
+    >
+      <form action="/students" method="GET" class="search-container">
+        <input
+          type="text"
+          name="keyword"
+          class="search-input"
+          placeholder="Nhập tên sinh viên..."
+          th:value="${param.keyword}"
+        />
+        <button type="submit" class="btn btn-blue">Tìm kiếm</button>
+      </form>
+
+      <button
+        type="button"
+        class="btn btn-green"
+        onclick="openModal('createModal')"
+      >
+        + Thêm Sinh Viên
+      </button>
+    </div>
 
     <table>
       <thead>
@@ -142,12 +184,83 @@
           <td th:text="${student.id}">ID Mẫu</td>
           <td th:text="${student.name}">Tên Mẫu</td>
           <td th:text="${student.email}">Email Mẫu</td>
-          <td th:text="${student.age}">0</td>
+          <td th:text="${student.age}">-1</td>
           <td>
-            <a th:href="@{/students/{id}(id=${student.id})}" class="btn-detail">Chi tiết</a>
+            <a
+              th:href="@{/students/{id}(id=${student.id})}"
+              class="btn btn-green"
+              style="padding: 5px 15px; font-size: 13px"
+              >Chi tiết</a
+            >
           </td>
         </tr>
       </tbody>
     </table>
+
+    <div id="createModal" class="modal-overlay">
+      <div class="modal-card">
+        <h2
+          style="
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+          "
+        >
+          Thêm Sinh Viên Mới
+        </h2>
+        <form
+          th:action="@{/students/create}"
+          th:object="${studentDto}"
+          method="POST"
+        >
+          <div class="form-group">
+            <label>Họ và Tên:</label>
+            <input
+              type="text"
+              class="form-control"
+              th:field="*{name}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              th:field="*{email}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Tuổi:</label>
+            <input
+              type="number"
+              class="form-control"
+              th:field="*{age}"
+              required
+            />
+          </div>
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-gray"
+              onclick="closeModal('createModal')"
+            >
+              Hủy
+            </button>
+            <button type="submit" class="btn btn-blue">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function openModal(modalId) {
+        document.getElementById(modalId).classList.add("active");
+      }
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove("active");
+      }
+    </script>
   </body>
 </html>

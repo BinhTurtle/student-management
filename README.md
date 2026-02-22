@@ -40,9 +40,11 @@ Bài tập Xây dựng Web App Quản lý Thông tin Sinh viên sử dụng Java
 ### Lab 1: Khởi Tạo & Kiến Trúc
 
 **1. Kết quả thêm 10 dữ liệu vào Database:**
+
 ![Thêm 10 dữ liệu](images/lab1/1_them_10_du_lieu.png)
 
 **2. Test trường hợp trùng ID (Unique Constraint):**
+
 ![Test trùng ID](images/lab1/2_test_trung_ID.png)
 
 **3. Test ràng buộc Not Null:**
@@ -53,27 +55,43 @@ Bài tập Xây dựng Web App Quản lý Thông tin Sinh viên sử dụng Java
 ### Lab 2: Xây Dựng Backend REST API
 
 **1. Test API getAll (Lấy danh sách sinh viên):**
+
 ![Get All API](images/lab2/1_getAll_api_test.png)
 
 **2. Test API getByID (Trường hợp ID tồn tại):**
+
 ![Get By ID Valid](images/lab2/2_getByID_api_valid_test.png)
 
 **3. Test API getByID (Trường hợp ID không tồn tại):**
+
 ![Get By ID Not Exist](images/lab2/3_getByID_api_notExist_test.png)
 
 
 ### Lab 3: Xây Dựng Frontend (SSR với Thymeleaf)
 
 **1. Trang chủ với hiển thị giao diện có điều kiện:**
+
 ![Homepage Conditional Display](images/lab3/1_homepage_with_conditional_display.png)
 
 **2. Chức năng tìm kiếm theo Tên hoặc Email:**
+
 ![Search by Name or Email](images/lab3/2_search_by_name_or_email.png)
 
 
 ### Lab 4: Hoàn Thiện Sản Phẩm
-*(Thêm screenshot cho các module CRUD của Lab 4 vào khu vực này)*
 
+**1. Chức năng thêm sinh viên mới:**
 
-### Lab 5: Docker & Deployment
-*(Bổ sung hình ảnh hoặc thông tin liên quan đến quá trình deploy bằng Docker lên Render/Neon)*
+![Add New Student](images/lab4/1_create_new_student_modal.png)
+
+**2. Trang thông tin sinh viên chi tiết:**
+
+![Student Detail](images/lab4/2_student_details_page.png)
+
+**3. Form chỉnh sửa thông tin sinh viên:**
+
+![Edit Student](images/lab4/3_student_info_edit_modal.png)
+
+**4. Chức năng xóa sinh viên:**
+
+![Delete Student](images/lab4/4_student_delete_confirm.png)
