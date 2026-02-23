@@ -11,6 +11,7 @@ Bài tập Xây dựng Web App Quản lý Thông tin Sinh viên sử dụng Java
 > **Link Deploy:** https://binh-student-management.onrender.com/students
 >
 > *(Bài tập đã được deploy theo yêu cầu của Lab 5)*
+> ⚠️ **Lưu ý nhỏ:** Do sử dụng gói Free của Render, Web Service sẽ tự động chuyển sang trạng thái "sleep" nếu không có truy cập trong vòng 15 phút. Ở lần truy cập đầu tiên sau đó, trang web có thể sẽ mất tới 5 phút để khởi động lại. Mong thầy kiên nhẫn chờ đợi.
 
 ## 🛠 Cài đặt và Hướng dẫn chạy (How to run)
 
