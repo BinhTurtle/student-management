@@ -47,12 +47,23 @@ Bài tập Xây dựng Web App Quản lý Thông tin Sinh viên sử dụng Java
 
 **2. Test trường hợp trùng ID (Unique Constraint):**
 
+* **Câu hỏi:** Cố tình Insert một sinh viên có id trùng với một người đã có sẵn. Tại sao Database lại chặn thao tác này với lỗi `UNIQUE constraint failed`?
+* **Trả lời:** Database chặn thao tác này vì cột `id` được thiết lập làm Primary Key. Chức năng của nó là làm định danh duy nhất cho mỗi bản ghi trong bảng. Việc ngăn chặn trùng lặp ID giúp đảm bảo tính toàn vẹn dữ liệu, tránh tình trạng hệ thống không phân biệt được hai sinh viên khác nhau nếu có cùng một ID.
+
 ![Test trùng ID](images/lab1/2_test_trung_ID.png)
 
 **3. Test ràng buộc Not Null:**
 
+* **Câu hỏi:** Thử Insert một sinh viên nhưng bỏ trống cột name (để NULL). Database có báo lỗi không? Từ đó suy nghĩ xem sự thiếu chặt chẽ này ảnh hưởng gì khi code Java đọc dữ liệu lên?
+* **Trả lời:** Nếu không thiết lập ràng buộc `NOT NULL` trong Database hoặc Entity (ví dụ: thiếu `@Column(nullable = false)`), Database sẽ **không báo lỗi** và vẫn chấp nhận lưu giá trị `NULL`, việc này có thể dẫn tới nhiều vấn đề cho ứng dụng. VD: Khi code Java (Hibernate) đọc bản ghi với thuộc tính `name` của đối tượng `Student` mang giá trị `null`, nếu ta gọi các phương thức xử lý trên thuộc tính này (ví dụ: `student.getName().toUpperCase()`) mà quên kiểm tra điều kiện, ứng dụng sẽ lập tức bị crash với lỗi `NullPointerException`.
+* **Kết quả sau khi đã bổ sung ràng buộc Not Null:**
+
 ![Test Not Null](images/lab1/3_test_rang_buoc_notnull.png)
 
+**4. Cấu hình Hibernate:**
+
+* **Câu hỏi:** Tại sao mỗi lần tắt ứng dụng và chạy lại, dữ liệu cũ trong Database lại bị mất hết?
+* **Trả lời:** Hiện tượng này xảy ra do cấu hình `spring.jpa.hibernate.ddl-auto=create` trong file `application.properties`. Lệnh `create` chỉ thị cho Hibernate mỗi khi khởi động lại ứng dụng sẽ tự động xóa toàn bộ bảng cũ và tạo lại cấu trúc bảng mới. Để khắc phục và giữ lại dữ liệu (đặc biệt là khi chạy trên môi trường production), ta cần đổi giá trị này thành `update` hoặc `none`.
 
 ### Lab 2: Xây Dựng Backend REST API
 
